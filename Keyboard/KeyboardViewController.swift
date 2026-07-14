@@ -8,6 +8,16 @@ final class KeyboardViewController: UIInputViewController {
     /// Last autocorrect we applied, so the user can revert it from the strip.
     private var lastAutocorrect: (original: String, corrected: String)?
 
+    // Emoji panel + in-keyboard emoji search
+    private var emojiPanel: EmojiPanel?
+    private var emojiSearchBar: EmojiSearchBar?
+    /// Non-nil while emoji search is active; holds the query typed so far.
+    private var emojiSearchQuery: String?
+
+    private var currentTheme: KeyboardTheme {
+        KeyboardTheme(traits: traitCollection, appearance: textDocumentProxy.keyboardAppearance ?? .default)
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -39,6 +49,8 @@ final class KeyboardViewController: UIInputViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        hideEmojiPanel()
+        dismissEmojiSearch()
         engine.reloadSettings()
         keyboardView.setAccentMap(KeyboardSettings.mergedAccents(for: KeyboardSettings.enabledLanguages))
         applyThemeFromContext()
@@ -62,6 +74,7 @@ final class KeyboardViewController: UIInputViewController {
         super.textDidChange(textInput)
         applyThemeFromContext()
         updateReturnKeyLabel()
+        guard emojiSearchQuery == nil else { return }
         updateAutoShift()
         refreshPredictions()
     }
@@ -104,8 +117,10 @@ final class KeyboardViewController: UIInputViewController {
     // MARK: - Appearance
 
     private func applyThemeFromContext() {
-        let theme = KeyboardTheme(traits: traitCollection, appearance: textDocumentProxy.keyboardAppearance ?? .default)
+        let theme = currentTheme
         keyboardView.applyTheme(theme)
+        emojiPanel?.applyTheme(theme)
+        emojiSearchBar?.applyTheme(theme)
     }
 
     private func updateReturnKeyLabel() {
@@ -127,7 +142,7 @@ final class KeyboardViewController: UIInputViewController {
 
     private func updateSpaceLabel() {
         let name = engine.currentLanguage.autonym
-        keyboardView.setSpaceLabel(engine.llmActive ? "✦ \(name)" : name)
+        keyboardView.setSpaceLabel(engine.llmActiveForCurrentLanguage ? "✦ \(name)" : name)
     }
 
     // MARK: - Auto-capitalization
@@ -195,8 +210,139 @@ final class KeyboardViewController: UIInputViewController {
 
 // MARK: - KeyboardViewDelegate
 
+// MARK: - Emoji panel & search
+
+extension KeyboardViewController {
+    private func showEmojiPanel() {
+        dismissEmojiSearch()
+        if emojiPanel == nil {
+            let panel = EmojiPanel(theme: currentTheme)
+            panel.delegate = self
+            panel.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(panel)
+            NSLayoutConstraint.activate([
+                panel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                panel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                panel.topAnchor.constraint(equalTo: view.topAnchor),
+                panel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            ])
+            emojiPanel = panel
+        }
+        emojiPanel?.reloadData()
+        emojiPanel?.isHidden = false
+        keyboardView.isHidden = true
+    }
+
+    private func hideEmojiPanel() {
+        emojiPanel?.isHidden = true
+        keyboardView.isHidden = false
+    }
+
+    private func enterEmojiSearch() {
+        hideEmojiPanel()
+        emojiSearchQuery = ""
+        keyboardView.setLayer(.letters)
+        keyboardView.setShiftState(.off)
+        if emojiSearchBar == nil {
+            let bar = EmojiSearchBar(theme: currentTheme)
+            bar.onPick = { [weak self] emoji in
+                self?.textDocumentProxy.insertText(emoji)
+                EmojiStore.shared.addRecent(emoji)
+            }
+            bar.onCancel = { [weak self] in
+                self?.dismissEmojiSearch()
+            }
+            keyboardView.addSubview(bar)
+            emojiSearchBar = bar
+        }
+        keyboardView.layoutIfNeeded()
+        emojiSearchBar?.frame = keyboardView.suggestionBar.frame
+        emojiSearchBar?.isHidden = false
+        updateEmojiSearchResults()
+    }
+
+    private func dismissEmojiSearch() {
+        guard emojiSearchQuery != nil || emojiSearchBar?.isHidden == false else { return }
+        emojiSearchQuery = nil
+        emojiSearchBar?.isHidden = true
+        updateAutoShift()
+        refreshPredictions()
+    }
+
+    private func updateEmojiSearchResults() {
+        guard let query = emojiSearchQuery else { return }
+        let codes = KeyboardSettings.enabledLanguages.map { String($0.id.prefix(2)) }
+        let results = EmojiStore.shared.search(query, languageCodes: codes)
+        emojiSearchBar?.update(query: query, results: results)
+    }
+
+    /// Key handling while emoji search is active: characters build the query
+    /// instead of going into the document.
+    fileprivate func handleKeyDuringEmojiSearch(_ key: Key, view: KeyboardView) {
+        switch key {
+        case .character(let value):
+            let text = view.shiftState.isUppercased && view.activeLayer == .letters
+                ? value.uppercased() : value
+            emojiSearchQuery? += text
+            if view.shiftState == .on && view.activeLayer == .letters {
+                view.setShiftState(.off)
+            }
+        case .space:
+            emojiSearchQuery? += " "
+        case .backspace:
+            if emojiSearchQuery?.isEmpty ?? true {
+                dismissEmojiSearch()
+                return
+            }
+            emojiSearchQuery?.removeLast()
+        case .newline:
+            dismissEmojiSearch()
+            return
+        case .emoji:
+            dismissEmojiSearch()
+            showEmojiPanel()
+            return
+        case .shift:
+            view.setShiftState(view.shiftState == .off ? .on : .off)
+        case .numbers:
+            view.setLayer(.numbers)
+        case .letters:
+            view.setLayer(.letters)
+        case .symbols:
+            view.setLayer(.symbols)
+        case .globe:
+            break
+        }
+        updateEmojiSearchResults()
+    }
+}
+
+extension KeyboardViewController: EmojiPanelDelegate {
+    func emojiPanel(_ panel: EmojiPanel, didPick emoji: String) {
+        textDocumentProxy.insertText(emoji)
+    }
+
+    func emojiPanelDidTapABC(_ panel: EmojiPanel) {
+        hideEmojiPanel()
+        updateAutoShift()
+        refreshPredictions()
+    }
+
+    func emojiPanelDidTapSearch(_ panel: EmojiPanel) {
+        enterEmojiSearch()
+    }
+
+    func emojiPanelDidTapBackspace(_ panel: EmojiPanel) {
+        textDocumentProxy.deleteBackward()
+    }
+}
+
 extension KeyboardViewController: KeyboardViewDelegate {
     func keyboardView(_ view: KeyboardView, didTap key: Key) {
+        if emojiSearchQuery != nil {
+            handleKeyDuringEmojiSearch(key, view: view)
+            return
+        }
         switch key {
         case .character(let value):
             let text = view.shiftState.isUppercased && view.activeLayer == .letters
@@ -226,6 +372,9 @@ extension KeyboardViewController: KeyboardViewDelegate {
             updateAutoShift()
         case .symbols:
             view.setLayer(.symbols)
+        case .emoji:
+            showEmojiPanel()
+            return
         case .globe:
             break // handled by keyboardViewDidTapGlobe
         }
@@ -252,6 +401,11 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
 
     func keyboardView(_ view: KeyboardView, didPickAccent accent: String) {
+        if emojiSearchQuery != nil {
+            emojiSearchQuery? += accent
+            updateEmojiSearchResults()
+            return
+        }
         insertText(accent)
         if view.shiftState == .on {
             view.setShiftState(.off)

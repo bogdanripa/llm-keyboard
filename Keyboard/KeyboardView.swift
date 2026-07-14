@@ -143,6 +143,8 @@ final class KeyboardView: UIView, UIInputViewAudioFeedback {
                 button.configure(title: "ABC", systemImage: nil, fontSize: 15)
             case .symbols:
                 button.configure(title: "#+=", systemImage: nil, fontSize: 15)
+            case .emoji:
+                button.configure(title: nil, systemImage: "face.smiling")
             }
         }
     }
@@ -191,27 +193,20 @@ final class KeyboardView: UIView, UIInputViewAudioFeedback {
 
         // Bottom row: fixed special keys, space takes the remainder.
         if rowIndex == 3 {
-            let numbersWidth = baseKeyWidth * 1.3
-            let globeWidth = baseKeyWidth * 1.2
-            let returnWidth = baseKeyWidth * 2.3
-            return row.map { key in
+            let numbersWidth = baseKeyWidth * 1.25
+            let globeWidth = baseKeyWidth * 1.1
+            let returnWidth = baseKeyWidth * 2.2
+            func fixedWidth(_ key: Key) -> CGFloat? {
                 switch key {
                 case .numbers, .letters: return numbersWidth
-                case .globe: return globeWidth
+                case .globe, .emoji: return globeWidth
                 case .newline: return returnWidth
-                case .space:
-                    let fixed = row.reduce(CGFloat(0)) { sum, k in
-                        switch k {
-                        case .numbers, .letters: return sum + numbersWidth
-                        case .globe: return sum + globeWidth
-                        case .newline: return sum + returnWidth
-                        default: return sum
-                        }
-                    }
-                    return available - fixed
+                case .space: return nil
                 default: return baseKeyWidth
                 }
             }
+            let fixed = row.compactMap(fixedWidth).reduce(0, +)
+            return row.map { fixedWidth($0) ?? (available - fixed) }
         }
 
         // Third row: side special keys (shift/backspace or layer switch/backspace).

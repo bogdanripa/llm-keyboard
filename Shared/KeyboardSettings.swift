@@ -46,6 +46,10 @@ enum KeyboardSettings {
             id: "pt-BR", name: "Portuguese", autonym: "Português",
             settingsKey: "lang_pt", spellCheckerLanguage: "pt_BR",
             accents: ["a": "áàâã", "e": "éê", "i": "í", "o": "óôõ", "u": "úü", "c": "ç"]),
+        KeyboardLanguage(
+            id: "ro-RO", name: "Romanian", autonym: "Română",
+            settingsKey: "lang_ro", spellCheckerLanguage: "ro_RO",
+            accents: ["a": "ăâ", "i": "î", "s": "ș", "t": "ț"]),
     ]
 
     /// Register defaults so toggles report correct values before the user

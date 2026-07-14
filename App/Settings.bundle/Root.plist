@@ -76,6 +76,16 @@
         </dict>
         <dict>
             <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>Română</string>
+            <key>Key</key>
+            <string>lang_ro</string>
+            <key>DefaultValue</key>
+            <false/>
+        </dict>
+        <dict>
+            <key>Type</key>
             <string>PSGroupSpecifier</string>
             <key>Title</key>
             <string>Intelligence</string>

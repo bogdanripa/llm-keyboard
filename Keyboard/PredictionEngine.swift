@@ -36,6 +36,15 @@ final class PredictionEngine {
         return false
     }
 
+    /// LLM predictions only run for languages the on-device model supports;
+    /// others (e.g. Romanian) keep tier-1 predictions and autocorrect.
+    var llmActiveForCurrentLanguage: Bool {
+        if #available(iOS 26.0, *) {
+            return llmActive && LLMPredictor.supportsLanguage(id: currentLanguage.id)
+        }
+        return false
+    }
+
     init() {
         reloadSettings()
     }
@@ -91,7 +100,8 @@ final class PredictionEngine {
 
         // Tier 2: debounced LLM pass over the whole context.
         debounceTask?.cancel()
-        guard llmActive, fullContext.trimmingCharacters(in: .whitespacesAndNewlines).count >= 2 else { return }
+        guard llmActiveForCurrentLanguage,
+              fullContext.trimmingCharacters(in: .whitespacesAndNewlines).count >= 2 else { return }
         latestRequestID += 1
         let requestID = latestRequestID
         debounceTask = Task { [weak self] in

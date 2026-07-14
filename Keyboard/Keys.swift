@@ -10,6 +10,7 @@ enum Key: Equatable {
     case numbers          // switch to number layer
     case letters          // switch to letter layer
     case symbols          // switch to symbol layer
+    case emoji            // open the emoji panel
 
     var isSpecial: Bool {
         if case .character = self { return false }
@@ -35,21 +36,21 @@ struct KeyboardLayout {
         "qwertyuiop".map { .character(String($0)) },
         "asdfghjkl".map { .character(String($0)) },
         [.shift] + "zxcvbnm".map { .character(String($0)) } + [.backspace],
-        [.numbers, .globe, .space, .newline],
+        [.numbers, .globe, .emoji, .space, .newline],
     ])
 
     static let numbers = KeyboardLayout(rows: [
         "1234567890".map { .character(String($0)) },
         ["-", "/", ":", ";", "(", ")", "$", "&", "@", "\""].map { .character($0) },
         [.symbols] + [".", ",", "?", "!", "'"].map { Key.character($0) } + [.backspace],
-        [.letters, .globe, .space, .newline],
+        [.letters, .globe, .emoji, .space, .newline],
     ])
 
     static let symbols = KeyboardLayout(rows: [
         ["[", "]", "{", "}", "#", "%", "^", "*", "+", "="].map { .character($0) },
         ["_", "\\", "|", "~", "<", ">", "€", "£", "¥", "•"].map { .character($0) },
         [.numbers] + [".", ",", "?", "!", "'"].map { Key.character($0) } + [.backspace],
-        [.letters, .globe, .space, .newline],
+        [.letters, .globe, .emoji, .space, .newline],
     ])
 
     static func layout(for layer: KeyboardLayer) -> KeyboardLayout {

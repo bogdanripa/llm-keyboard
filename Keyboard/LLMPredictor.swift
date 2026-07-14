@@ -35,6 +35,14 @@ final class LLMPredictor {
         return false
     }
 
+    /// Whether the on-device model officially supports a language ("ro-RO" → false today).
+    static func supportsLanguage(id: String) -> Bool {
+        let code = String(id.prefix(2))
+        return SystemLanguageModel.default.supportedLanguages.contains {
+            $0.languageCode?.identifier == code
+        }
+    }
+
     static var unavailableReason: String? {
         switch SystemLanguageModel.default.availability {
         case .available:

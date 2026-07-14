@@ -8,10 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		04B7746646C04CA0308135D0 /* LLMPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFA193B36A353348621601 /* LLMPredictor.swift */; };
+		113251376E5EA47F1DF10C1F /* EmojiPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE157F39456FC2329043113 /* EmojiPanel.swift */; };
+		12CFE871DE741B24744222BD /* keywords-es.json in Resources */ = {isa = PBXBuildFile; fileRef = 362E3FE3FBC88D13F171F401 /* keywords-es.json */; };
+		1DA621CC4DC7A1750C244A3B /* EmojiStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D7C00E34FBB1DA6DC44AB /* EmojiStore.swift */; };
+		3009A6DA87ED734B962C95FC /* emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C94F85B397F5EF212E4482C /* emoji.json */; };
+		331ABC5C12E32948BA8F0503 /* keywords-ro.json in Resources */ = {isa = PBXBuildFile; fileRef = 673792A99B271140E5DB96A7 /* keywords-ro.json */; };
+		485697C1AC6C0F63AA78ED94 /* EmojiSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45488BFF00CB909516C5F4 /* EmojiSearchBar.swift */; };
 		4870C1693F1970C0D9B3F3C9 /* LLMKeyboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD8DB8222CA43E598BAF27A /* LLMKeyboardApp.swift */; };
 		5724156CB40B37B3BC016BA2 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41238073267292ADC7BF96B8 /* KeyboardSettings.swift */; };
 		5DF0F4F5599DA0F12CF5B7DA /* LLMKeyboardExt.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3D658F99189FEAF721EF3743 /* LLMKeyboardExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6209B6A486247D80854CA6FB /* SuggestionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB07B8134C6AE3CBA45E7EA /* SuggestionBar.swift */; };
+		68E8BA6251F930B0D21CB43F /* keywords-de.json in Resources */ = {isa = PBXBuildFile; fileRef = 37AA86947EF2B25B26B717AA /* keywords-de.json */; };
 		7FAC297B4B6D1494B5DB7AE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B357A348F1D5A09F964D64 /* ContentView.swift */; };
 		802958857E9E3C57C99E6613 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C43B40519A138162D5BB57 /* KeyboardViewController.swift */; };
 		8838BA666C72BBFF9F054FE8 /* AccentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C558FD1B5C39EB33B29141 /* AccentPicker.swift */; };
@@ -19,7 +26,11 @@
 		927BB5F8E9655CFC25564E71 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43A19ECDEC3DB2924197149 /* KeyboardView.swift */; };
 		A40B7527AB985477916FCEF2 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41238073267292ADC7BF96B8 /* KeyboardSettings.swift */; };
 		AB7CB84AEDE7FBC8342D0E8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED87CBC894C806327208462 /* Assets.xcassets */; };
+		BC719B8250A8600C22EA585C /* keywords-pt.json in Resources */ = {isa = PBXBuildFile; fileRef = 2543C84945827CAB64E6B9F3 /* keywords-pt.json */; };
+		CA4F2DAB3C106C21AACD7A4E /* keywords-en.json in Resources */ = {isa = PBXBuildFile; fileRef = D1EEABB72B439D78D1162ABE /* keywords-en.json */; };
+		DD9D222BACF19798ACCF1499 /* keywords-it.json in Resources */ = {isa = PBXBuildFile; fileRef = B93C6337E967DEA410056E03 /* keywords-it.json */; };
 		DF994E755DAFD20C93926EEB /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F622A11CE5A7540309386AC2 /* KeyButton.swift */; };
+		E7E74922B278B56EB3C4B60D /* keywords-fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C60C0A8EBA14BFAA4ABFA71 /* keywords-fr.json */; };
 		F5B160A87727ABA52FD8FE64 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF4F2F413A86C2F63B44BA8 /* Keys.swift */; };
 		F9D4BC41124894C744B01BD5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C4B3CF758F997FCE2365CC6 /* Settings.bundle */; };
 /* End PBXBuildFile section */
@@ -49,19 +60,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		155D7C00E34FBB1DA6DC44AB /* EmojiStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiStore.swift; sourceTree = "<group>"; };
 		1CEB900A1A290711B0F47533 /* LLMKeyboard.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LLMKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EE157F39456FC2329043113 /* EmojiPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPanel.swift; sourceTree = "<group>"; };
+		2543C84945827CAB64E6B9F3 /* keywords-pt.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "keywords-pt.json"; sourceTree = "<group>"; };
 		2C4B3CF758F997FCE2365CC6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = wrapper.cfbundle; path = Settings.bundle; sourceTree = "<group>"; };
 		30E0502A013C7A431C4B1F26 /* PredictionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionEngine.swift; sourceTree = "<group>"; };
 		31F87980F3200F20870E5FF6 /* LLMKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LLMKeyboard.entitlements; sourceTree = "<group>"; };
 		32AFA193B36A353348621601 /* LLMPredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMPredictor.swift; sourceTree = "<group>"; };
+		362E3FE3FBC88D13F171F401 /* keywords-es.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "keywords-es.json"; sourceTree = "<group>"; };
+		37AA86947EF2B25B26B717AA /* keywords-de.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "keywords-de.json"; sourceTree = "<group>"; };
 		3D658F99189FEAF721EF3743 /* LLMKeyboardExt.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = LLMKeyboardExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		41238073267292ADC7BF96B8 /* KeyboardSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
 		49F459BFAC43CF87AA4F8FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		673792A99B271140E5DB96A7 /* keywords-ro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "keywords-ro.json"; sourceTree = "<group>"; };
+		7C60C0A8EBA14BFAA4ABFA71 /* keywords-fr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "keywords-fr.json"; sourceTree = "<group>"; };
+		7C94F85B397F5EF212E4482C /* emoji.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = emoji.json; sourceTree = "<group>"; };
 		7FB07B8134C6AE3CBA45E7EA /* SuggestionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionBar.swift; sourceTree = "<group>"; };
+		AA45488BFF00CB909516C5F4 /* EmojiSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSearchBar.swift; sourceTree = "<group>"; };
 		B43A19ECDEC3DB2924197149 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		B93C6337E967DEA410056E03 /* keywords-it.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "keywords-it.json"; sourceTree = "<group>"; };
 		BED87CBC894C806327208462 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4C43B40519A138162D5BB57 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		D1C558FD1B5C39EB33B29141 /* AccentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentPicker.swift; sourceTree = "<group>"; };
+		D1EEABB72B439D78D1162ABE /* keywords-en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "keywords-en.json"; sourceTree = "<group>"; };
 		DDD8DB8222CA43E598BAF27A /* LLMKeyboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMKeyboardApp.swift; sourceTree = "<group>"; };
 		E8B357A348F1D5A09F964D64 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F5A784806A74ED343FE4E242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -75,6 +97,9 @@
 			isa = PBXGroup;
 			children = (
 				D1C558FD1B5C39EB33B29141 /* AccentPicker.swift */,
+				1EE157F39456FC2329043113 /* EmojiPanel.swift */,
+				AA45488BFF00CB909516C5F4 /* EmojiSearchBar.swift */,
+				155D7C00E34FBB1DA6DC44AB /* EmojiStore.swift */,
 				49F459BFAC43CF87AA4F8FC7 /* Info.plist */,
 				B43A19ECDEC3DB2924197149 /* KeyboardView.swift */,
 				C4C43B40519A138162D5BB57 /* KeyboardViewController.swift */,
@@ -84,6 +109,7 @@
 				32AFA193B36A353348621601 /* LLMPredictor.swift */,
 				30E0502A013C7A431C4B1F26 /* PredictionEngine.swift */,
 				7FB07B8134C6AE3CBA45E7EA /* SuggestionBar.swift */,
+				E7FB721895C0B8007EEB0E5D /* EmojiData */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -128,6 +154,21 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		E7FB721895C0B8007EEB0E5D /* EmojiData */ = {
+			isa = PBXGroup;
+			children = (
+				7C94F85B397F5EF212E4482C /* emoji.json */,
+				37AA86947EF2B25B26B717AA /* keywords-de.json */,
+				D1EEABB72B439D78D1162ABE /* keywords-en.json */,
+				362E3FE3FBC88D13F171F401 /* keywords-es.json */,
+				7C60C0A8EBA14BFAA4ABFA71 /* keywords-fr.json */,
+				B93C6337E967DEA410056E03 /* keywords-it.json */,
+				2543C84945827CAB64E6B9F3 /* keywords-pt.json */,
+				673792A99B271140E5DB96A7 /* keywords-ro.json */,
+			);
+			path = EmojiData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,6 +177,7 @@
 			buildConfigurationList = EDA183CD24A64176A1B5DE0A /* Build configuration list for PBXNativeTarget "LLMKeyboardExt" */;
 			buildPhases = (
 				C6DA39FB87A5ACD717D58C11 /* Sources */,
+				AF5E7A3B5C4C4907D33C9769 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +259,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AF5E7A3B5C4C4907D33C9769 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3009A6DA87ED734B962C95FC /* emoji.json in Resources */,
+				68E8BA6251F930B0D21CB43F /* keywords-de.json in Resources */,
+				CA4F2DAB3C106C21AACD7A4E /* keywords-en.json in Resources */,
+				12CFE871DE741B24744222BD /* keywords-es.json in Resources */,
+				E7E74922B278B56EB3C4B60D /* keywords-fr.json in Resources */,
+				DD9D222BACF19798ACCF1499 /* keywords-it.json in Resources */,
+				BC719B8250A8600C22EA585C /* keywords-pt.json in Resources */,
+				331ABC5C12E32948BA8F0503 /* keywords-ro.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -235,6 +292,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8838BA666C72BBFF9F054FE8 /* AccentPicker.swift in Sources */,
+				113251376E5EA47F1DF10C1F /* EmojiPanel.swift in Sources */,
+				485697C1AC6C0F63AA78ED94 /* EmojiSearchBar.swift in Sources */,
+				1DA621CC4DC7A1750C244A3B /* EmojiStore.swift in Sources */,
 				DF994E755DAFD20C93926EEB /* KeyButton.swift in Sources */,
 				5724156CB40B37B3BC016BA2 /* KeyboardSettings.swift in Sources */,
 				927BB5F8E9655CFC25564E71 /* KeyboardView.swift in Sources */,
