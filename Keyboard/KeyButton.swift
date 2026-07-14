@@ -65,7 +65,25 @@ final class KeyButton: UIControl {
         imageView.tintColor = theme.keyText
     }
 
+    private func updateAccessibility(title: String?) {
+        isAccessibilityElement = true
+        accessibilityTraits = [.keyboardKey]
+        switch key {
+        case .character(let value): accessibilityLabel = title ?? value
+        case .shift: accessibilityLabel = "shift"
+        case .backspace: accessibilityLabel = "delete"
+        case .space: accessibilityLabel = "space"
+        case .newline: accessibilityLabel = title ?? "return"
+        case .globe: accessibilityLabel = "next keyboard"
+        case .numbers: accessibilityLabel = "numbers"
+        case .letters: accessibilityLabel = "letters"
+        case .symbols: accessibilityLabel = "symbols"
+        case .emoji: accessibilityLabel = "emoji"
+        }
+    }
+
     func configure(title: String?, systemImage: String?, fontSize: CGFloat = 23) {
+        updateAccessibility(title: title)
         if let title {
             label.text = title
             label.font = .systemFont(ofSize: fontSize, weight: key.isSpecial ? .regular : .light)

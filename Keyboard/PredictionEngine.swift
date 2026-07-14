@@ -117,6 +117,12 @@ final class PredictionEngine {
         guard !currentWord.isEmpty else { return [] }
         var words: [String] = []
 
+        // If the word-so-far is already misspelled, lead with the best fix
+        // ("Helo" → "Hello") — completions alone would only offer "Helot(s)".
+        if currentWord.count >= 3, let guess = spellingFix(for: currentWord) {
+            words.append(guess)
+        }
+
         // User lexicon (contact names, text replacements) first.
         if let lexicon {
             for entry in lexicon.entries
@@ -200,8 +206,14 @@ final class PredictionEngine {
 
     /// Dictionary-level autocorrect for a just-completed word.
     func autocorrection(for word: String) -> String? {
-        guard KeyboardSettings.autocorrectEnabled,
-              word.count >= 2,
+        guard KeyboardSettings.autocorrectEnabled else { return nil }
+        return spellingFix(for: word)
+    }
+
+    /// Best spelling fix for a misspelled word, or nil if the word is fine
+    /// or no trustworthy fix exists.
+    private func spellingFix(for word: String) -> String? {
+        guard word.count >= 2,
               word.rangeOfCharacter(from: .letters) != nil,
               word.rangeOfCharacter(from: .decimalDigits) == nil else { return nil }
 
@@ -213,18 +225,33 @@ final class PredictionEngine {
         guard misspelled.location != NSNotFound else { return nil }
 
         guard let guesses = checker.guesses(forWordRange: fullRange, in: word, language: language),
-              let best = guesses.first else { return nil }
+              !guesses.isEmpty else { return nil }
 
-        // Only auto-apply near-miss fixes; anything drastic stays a suggestion.
-        guard best.lowercased() != word.lowercased(),
-              abs(best.count - word.count) <= 2,
-              !best.contains(" ") || best.replacingOccurrences(of: " ", with: "").lowercased() == word.lowercased()
-        else { return nil }
+        // Near-miss candidates only; anything drastic isn't worth auto-applying.
+        let plausible = guesses.filter {
+            abs($0.count - word.count) <= 2 && $0.lowercased() != word.lowercased() && !$0.contains(" ")
+        }
+        // Prefer fixes where the user typed only correct letters and merely
+        // missed some ("Helo" is a subsequence of "Hello" but not of "Help").
+        let best = plausible.first { Self.isSubsequence(word.lowercased(), of: $0.lowercased()) }
+            ?? plausible.first
+        guard let best else { return nil }
 
         // Preserve leading capitalization.
         if let first = word.first, first.isUppercase, let bestFirst = best.first {
             return String(bestFirst).uppercased() + best.dropFirst()
         }
         return best
+    }
+
+    private static func isSubsequence(_ needle: String, of haystack: String) -> Bool {
+        var iterator = haystack.makeIterator()
+        outer: for character in needle {
+            while let candidate = iterator.next() {
+                if candidate == character { continue outer }
+            }
+            return false
+        }
+        return true
     }
 }

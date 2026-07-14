@@ -8,6 +8,12 @@ final class KeyboardViewController: UIInputViewController {
     /// Last autocorrect we applied, so the user can revert it from the strip.
     private var lastAutocorrect: (original: String, corrected: String)?
 
+    /// Time of the last space-key tap, for the double-tap-space → ". " gesture.
+    private var lastSpaceAt: TimeInterval = 0
+    /// True right after a suggestion inserted a trailing space; the next space
+    /// tap is a no-op and trailing punctuation swallows that space (smart spacing).
+    private var suggestionSpacePending = false
+
     // Emoji panel + in-keyboard emoji search
     private var emojiPanel: EmojiPanel?
     private var emojiSearchBar: EmojiSearchBar?
@@ -347,8 +353,19 @@ extension KeyboardViewController: KeyboardViewDelegate {
         case .character(let value):
             let text = view.shiftState.isUppercased && view.activeLayer == .letters
                 ? value.uppercased() : value
+            let isPunctuation = [".", ",", "!", "?", ":", ";"].contains(value)
+            // Smart spacing: punctuation right after a suggestion's auto-space
+            // attaches to the word ("hello ," → "hello, ").
+            if isPunctuation, suggestionSpacePending, contextBefore.hasSuffix(" ") {
+                suggestionSpacePending = false
+                textDocumentProxy.deleteBackward()
+                insertText(text + " ")
+                refreshAfterEdit(key: key)
+                return
+            }
+            suggestionSpacePending = false
             // Word-boundary punctuation triggers autocorrect of the word before it.
-            if [".", ",", "!", "?", ":", ";"].contains(value) {
+            if isPunctuation {
                 autocorrectIfNeeded()
             }
             insertText(text)
@@ -362,6 +379,7 @@ extension KeyboardViewController: KeyboardViewDelegate {
             insertText("\n")
         case .backspace:
             lastAutocorrect = nil
+            suggestionSpacePending = false
             textDocumentProxy.deleteBackward()
         case .shift:
             view.setShiftState(view.shiftState == .off ? .on : .off)
@@ -382,15 +400,28 @@ extension KeyboardViewController: KeyboardViewDelegate {
     }
 
     private func handleSpace() {
-        // Double-tap space → ". "
+        let now = CACurrentMediaTime()
+        let quickSecondTap = now - lastSpaceAt < 0.6
+        lastSpaceAt = now
         let context = contextBefore
-        if context.hasSuffix(" "), !context.hasSuffix("  "),
+
+        // Quick double-tap space → ". " (only right after a word).
+        if quickSecondTap, context.hasSuffix(" "), !context.hasSuffix("  "),
            let beforeSpace = context.dropLast().last,
            beforeSpace.isLetter || beforeSpace.isNumber {
+            suggestionSpacePending = false
             textDocumentProxy.deleteBackward()
             insertText(". ")
             return
         }
+
+        // A suggestion just inserted a trailing space — don't double it.
+        if suggestionSpacePending, context.hasSuffix(" ") {
+            suggestionSpacePending = false
+            return
+        }
+
+        suggestionSpacePending = false
         autocorrectIfNeeded()
         insertText(" ")
     }
@@ -418,6 +449,8 @@ extension KeyboardViewController: KeyboardViewDelegate {
         switch suggestion.action {
         case .replaceCurrentWord(let word):
             applyWordReplacement(word)
+            suggestionSpacePending = true
+            lastSpaceAt = 0
         case .replaceTrailingText(let target, let replacement):
             applyTrailingReplacement(target: target, replacement: replacement)
             lastAutocorrect = nil

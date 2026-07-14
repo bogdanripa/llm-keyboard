@@ -83,14 +83,23 @@ final class KeyboardView: UIView, UIInputViewAudioFeedback {
 
     // MARK: - Key construction
 
+    /// The rows the current buttons were built from (globe already filtered),
+    /// so layout always matches the buttons even if needsInputModeSwitchKey
+    /// changes after construction.
+    private var builtRows: [[Key]] = []
+    private var builtWithGlobe = true
+
     private func rebuildKeys() {
         keyButtons.forEach { $0.removeFromSuperview() }
         keyButtons = []
+        builtRows = []
 
         let layout = KeyboardLayout.layout(for: activeLayer)
         let needsGlobe = delegate?.keyboardViewNeedsInputModeSwitch(self) ?? true
+        builtWithGlobe = needsGlobe
 
         for row in layout.rows {
+            builtRows.append(row.filter { $0 != .globe || needsGlobe })
             for key in row {
                 if key == .globe && !needsGlobe { continue }
                 let button = KeyButton(key: key, theme: theme)
@@ -157,7 +166,13 @@ final class KeyboardView: UIView, UIInputViewAudioFeedback {
         let width = bounds.width
         suggestionBar.frame = CGRect(x: 0, y: 0, width: width, height: KeyboardMetrics.suggestionBarHeight)
 
-        let layout = KeyboardLayout.layout(for: activeLayer)
+        // If the globe requirement changed since the buttons were built
+        // (the delegate wasn't attached yet during init), rebuild first.
+        let needsGlobe = delegate?.keyboardViewNeedsInputModeSwitch(self) ?? true
+        if needsGlobe != builtWithGlobe {
+            rebuildKeys()
+        }
+
         let side = KeyboardMetrics.sideInset
         let gapX = KeyboardMetrics.keyGapX
         let rowHeight = KeyboardMetrics.rowHeight
@@ -165,10 +180,8 @@ final class KeyboardView: UIView, UIInputViewAudioFeedback {
         let baseKeyWidth = (width - 2 * side - 9 * gapX) / 10
 
         var buttonIndex = 0
-        let needsGlobe = delegate?.keyboardViewNeedsInputModeSwitch(self) ?? true
 
-        for (rowIndex, row) in layout.rows.enumerated() {
-            let visibleRow = row.filter { $0 != .globe || needsGlobe }
+        for (rowIndex, visibleRow) in builtRows.enumerated() {
             let y = KeyboardMetrics.suggestionBarHeight + CGFloat(rowIndex) * rowHeight + KeyboardMetrics.keyGapY / 2
 
             let widths = rowWidths(for: visibleRow, rowIndex: rowIndex,
