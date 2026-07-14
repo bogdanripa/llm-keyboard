@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04B7746646C04CA0308135D0 /* LLMPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFA193B36A353348621601 /* LLMPredictor.swift */; };
+		4870C1693F1970C0D9B3F3C9 /* LLMKeyboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD8DB8222CA43E598BAF27A /* LLMKeyboardApp.swift */; };
+		5724156CB40B37B3BC016BA2 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41238073267292ADC7BF96B8 /* KeyboardSettings.swift */; };
+		5DF0F4F5599DA0F12CF5B7DA /* LLMKeyboardExt.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3D658F99189FEAF721EF3743 /* LLMKeyboardExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6209B6A486247D80854CA6FB /* SuggestionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB07B8134C6AE3CBA45E7EA /* SuggestionBar.swift */; };
+		7FAC297B4B6D1494B5DB7AE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B357A348F1D5A09F964D64 /* ContentView.swift */; };
+		802958857E9E3C57C99E6613 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C43B40519A138162D5BB57 /* KeyboardViewController.swift */; };
+		8838BA666C72BBFF9F054FE8 /* AccentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C558FD1B5C39EB33B29141 /* AccentPicker.swift */; };
+		8F8C71F2391CD33BBA5A8BDA /* PredictionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0502A013C7A431C4B1F26 /* PredictionEngine.swift */; };
+		927BB5F8E9655CFC25564E71 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43A19ECDEC3DB2924197149 /* KeyboardView.swift */; };
+		A40B7527AB985477916FCEF2 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41238073267292ADC7BF96B8 /* KeyboardSettings.swift */; };
+		AB7CB84AEDE7FBC8342D0E8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED87CBC894C806327208462 /* Assets.xcassets */; };
+		DF994E755DAFD20C93926EEB /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F622A11CE5A7540309386AC2 /* KeyButton.swift */; };
+		F5B160A87727ABA52FD8FE64 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF4F2F413A86C2F63B44BA8 /* Keys.swift */; };
+		F9D4BC41124894C744B01BD5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C4B3CF758F997FCE2365CC6 /* Settings.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		78F4600F28841A8E4752F575 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CAA1DA4E7A4F92AEE00E0FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5581F76CCE20BF316FB67237;
+			remoteInfo = LLMKeyboardExt;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C203FDE47D2FB449413BE151 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5DF0F4F5599DA0F12CF5B7DA /* LLMKeyboardExt.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1CEB900A1A290711B0F47533 /* LLMKeyboard.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LLMKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C4B3CF758F997FCE2365CC6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = wrapper.cfbundle; path = Settings.bundle; sourceTree = "<group>"; };
+		30E0502A013C7A431C4B1F26 /* PredictionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionEngine.swift; sourceTree = "<group>"; };
+		31F87980F3200F20870E5FF6 /* LLMKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LLMKeyboard.entitlements; sourceTree = "<group>"; };
+		32AFA193B36A353348621601 /* LLMPredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMPredictor.swift; sourceTree = "<group>"; };
+		3D658F99189FEAF721EF3743 /* LLMKeyboardExt.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = LLMKeyboardExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		41238073267292ADC7BF96B8 /* KeyboardSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
+		49F459BFAC43CF87AA4F8FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7FB07B8134C6AE3CBA45E7EA /* SuggestionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionBar.swift; sourceTree = "<group>"; };
+		B43A19ECDEC3DB2924197149 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		BED87CBC894C806327208462 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C4C43B40519A138162D5BB57 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		D1C558FD1B5C39EB33B29141 /* AccentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentPicker.swift; sourceTree = "<group>"; };
+		DDD8DB8222CA43E598BAF27A /* LLMKeyboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMKeyboardApp.swift; sourceTree = "<group>"; };
+		E8B357A348F1D5A09F964D64 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F5A784806A74ED343FE4E242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F622A11CE5A7540309386AC2 /* KeyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButton.swift; sourceTree = "<group>"; };
+		FE5BF352847D9E649F57FBA9 /* LLMKeyboardExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LLMKeyboardExt.entitlements; sourceTree = "<group>"; };
+		FFF4F2F413A86C2F63B44BA8 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0FC7830C7C9FC716B29B6F7E /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D1C558FD1B5C39EB33B29141 /* AccentPicker.swift */,
+				49F459BFAC43CF87AA4F8FC7 /* Info.plist */,
+				B43A19ECDEC3DB2924197149 /* KeyboardView.swift */,
+				C4C43B40519A138162D5BB57 /* KeyboardViewController.swift */,
+				F622A11CE5A7540309386AC2 /* KeyButton.swift */,
+				FFF4F2F413A86C2F63B44BA8 /* Keys.swift */,
+				FE5BF352847D9E649F57FBA9 /* LLMKeyboardExt.entitlements */,
+				32AFA193B36A353348621601 /* LLMPredictor.swift */,
+				30E0502A013C7A431C4B1F26 /* PredictionEngine.swift */,
+				7FB07B8134C6AE3CBA45E7EA /* SuggestionBar.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		5050F157025ED5D254F81A4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1CEB900A1A290711B0F47533 /* LLMKeyboard.app */,
+				3D658F99189FEAF721EF3743 /* LLMKeyboardExt.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8369039878406F0CE8A47FF7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BED87CBC894C806327208462 /* Assets.xcassets */,
+				E8B357A348F1D5A09F964D64 /* ContentView.swift */,
+				F5A784806A74ED343FE4E242 /* Info.plist */,
+				31F87980F3200F20870E5FF6 /* LLMKeyboard.entitlements */,
+				DDD8DB8222CA43E598BAF27A /* LLMKeyboardApp.swift */,
+				2C4B3CF758F997FCE2365CC6 /* Settings.bundle */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1C9CDA6F11B6D9DD7D14E9C = {
+			isa = PBXGroup;
+			children = (
+				8369039878406F0CE8A47FF7 /* App */,
+				0FC7830C7C9FC716B29B6F7E /* Keyboard */,
+				CEC89F2305E0A350599CC92D /* Shared */,
+				5050F157025ED5D254F81A4F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CEC89F2305E0A350599CC92D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				41238073267292ADC7BF96B8 /* KeyboardSettings.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5581F76CCE20BF316FB67237 /* LLMKeyboardExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA183CD24A64176A1B5DE0A /* Build configuration list for PBXNativeTarget "LLMKeyboardExt" */;
+			buildPhases = (
+				C6DA39FB87A5ACD717D58C11 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LLMKeyboardExt;
+			packageProductDependencies = (
+			);
+			productName = LLMKeyboardExt;
+			productReference = 3D658F99189FEAF721EF3743 /* LLMKeyboardExt.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C67AF4A83139CD3E2854C4CE /* LLMKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADD4EB98E9412CDF2E643C8B /* Build configuration list for PBXNativeTarget "LLMKeyboard" */;
+			buildPhases = (
+				A4C9FE6E914044A76031F464 /* Sources */,
+				453A12EB0748CBE2BAF72E54 /* Resources */,
+				C203FDE47D2FB449413BE151 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D79856567A6F72154D8059E /* PBXTargetDependency */,
+			);
+			name = LLMKeyboard;
+			packageProductDependencies = (
+			);
+			productName = LLMKeyboard;
+			productReference = 1CEB900A1A290711B0F47533 /* LLMKeyboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3CAA1DA4E7A4F92AEE00E0FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5581F76CCE20BF316FB67237 = {
+						DevelopmentTeam = Y6SUP9Q5H2;
+						ProvisioningStyle = Automatic;
+					};
+					C67AF4A83139CD3E2854C4CE = {
+						DevelopmentTeam = Y6SUP9Q5H2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 55AB903E1D506D2614425183 /* Build configuration list for PBXProject "LLMKeyboard" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = A1C9CDA6F11B6D9DD7D14E9C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5050F157025ED5D254F81A4F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C67AF4A83139CD3E2854C4CE /* LLMKeyboard */,
+				5581F76CCE20BF316FB67237 /* LLMKeyboardExt */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		453A12EB0748CBE2BAF72E54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB7CB84AEDE7FBC8342D0E8C /* Assets.xcassets in Resources */,
+				F9D4BC41124894C744B01BD5 /* Settings.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4C9FE6E914044A76031F464 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FAC297B4B6D1494B5DB7AE8 /* ContentView.swift in Sources */,
+				A40B7527AB985477916FCEF2 /* KeyboardSettings.swift in Sources */,
+				4870C1693F1970C0D9B3F3C9 /* LLMKeyboardApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6DA39FB87A5ACD717D58C11 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8838BA666C72BBFF9F054FE8 /* AccentPicker.swift in Sources */,
+				DF994E755DAFD20C93926EEB /* KeyButton.swift in Sources */,
+				5724156CB40B37B3BC016BA2 /* KeyboardSettings.swift in Sources */,
+				927BB5F8E9655CFC25564E71 /* KeyboardView.swift in Sources */,
+				802958857E9E3C57C99E6613 /* KeyboardViewController.swift in Sources */,
+				F5B160A87727ABA52FD8FE64 /* Keys.swift in Sources */,
+				04B7746646C04CA0308135D0 /* LLMPredictor.swift in Sources */,
+				8F8C71F2391CD33BBA5A8BDA /* PredictionEngine.swift in Sources */,
+				6209B6A486247D80854CA6FB /* SuggestionBar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4D79856567A6F72154D8059E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5581F76CCE20BF316FB67237 /* LLMKeyboardExt */;
+			targetProxy = 78F4600F28841A8E4752F575 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		18D39D849738592933521467 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Y6SUP9Q5H2;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		513A5192E7FB60D332670D1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Keyboard/LLMKeyboardExt.entitlements;
+				INFOPLIST_FILE = Keyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				OTHER_LDFLAGS = "-weak_framework FoundationModels";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bogdanripa.llmkeyboard.keyboard;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		661412EE474654C515B0D3E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/LLMKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "LLM Keys";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = "-weak_framework FoundationModels";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bogdanripa.llmkeyboard;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ABADE477CD2F5D9F3192492D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y6SUP9Q5H2;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AEC5E9D9073D286588B3045E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/LLMKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "LLM Keys";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = "-weak_framework FoundationModels";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bogdanripa.llmkeyboard;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D49300DC6BA32C0EAB6B8081 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Keyboard/LLMKeyboardExt.entitlements;
+				INFOPLIST_FILE = Keyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				OTHER_LDFLAGS = "-weak_framework FoundationModels";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bogdanripa.llmkeyboard.keyboard;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		55AB903E1D506D2614425183 /* Build configuration list for PBXProject "LLMKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18D39D849738592933521467 /* Debug */,
+				ABADE477CD2F5D9F3192492D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		ADD4EB98E9412CDF2E643C8B /* Build configuration list for PBXNativeTarget "LLMKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				661412EE474654C515B0D3E5 /* Debug */,
+				AEC5E9D9073D286588B3045E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EDA183CD24A64176A1B5DE0A /* Build configuration list for PBXNativeTarget "LLMKeyboardExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				513A5192E7FB60D332670D1A /* Debug */,
+				D49300DC6BA32C0EAB6B8081 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3CAA1DA4E7A4F92AEE00E0FE /* Project object */;
+}
